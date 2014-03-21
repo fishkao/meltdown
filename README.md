@@ -19,7 +19,7 @@ Download and install the plugin using the Plugin Manager using the following URL
 
 ## Warning
 
-For Strikethrough, ~~  syntax is not supported, please use "&lt;s &gt;" or "<del>" instead.
+For Strikethrough, ~~  syntax is not supported, please use "&lt;s &gt; &lt;\s &gt;" or "&lt;dek &gt;" instead.
 
 ## Usage
 

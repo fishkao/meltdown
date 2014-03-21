@@ -6,22 +6,22 @@
     type       : syntax
     lastupdate : 2014-03-21
     compatible : 2012-10-13 “Adora Belle” and newer
-    depends    : 
+    depends    :
     conflicts  :
-    similar    : markdown 
+    similar    : markdown
     tags       : formatting, markup_language
-    downloadurl: 
+    downloadurl:
     ----
 
-##Download and Installation
+## Download and Installation
 
 Download and install the plugin using the Plugin Manager using the following URL. Refer to [[:Plugins]] on how to install plugins manually.
 
-##Warning
+## Warning
 
-for Strikethrough, ~~strikethrough~~ is not supported, please use
-"<s>text</s>" or "<del>text<del>" instead.
-##Usage
+For Strikethrough, ~~  syntax is not supported, please use "<s>" or "<del>" instead.
+
+## Usage
 
 If the page name ends with ''.md'' suffix, it gets automatically parsed using PHP Markdown Extra. To use that markup in other pages, the content must be embedded in a markdown block. For example:
 
@@ -56,7 +56,7 @@ Front matter is a text block at the top of dokuwiki page with .md suffix. It beg
     ---
     {{tag>test}}
     ---
-    
+
 
 #### Why front matter?
 I love this markdown extra plugin, the best feature is .md suffix. And I love [tag plugin](https://www.dokuwiki.org/plugin:tag) too, but I can't use it with page with .md suffix as {{tag>tat1 tag2 tag3}} syntax will not work within <markdown></markdown>. So I added this front matter feature.

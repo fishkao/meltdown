@@ -12,6 +12,9 @@
     tags       : formatting, markup_language
     downloadurl:
     ----
+## Update 
+
+Add code highlight using google-code-prettify 
 
 ## Download and Installation
 

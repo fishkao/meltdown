@@ -52,16 +52,14 @@ class action_plugin_markdownextra extends DokuWiki_Action_Plugin {
                 'rel'     => 'stylesheet',
                 'type'    => 'text/css',
                 'href'    => $meltdownBase.'css/markdown.css');
-           if($ACT == 'show') {
-                $event->data['link'][] = array(
-                    'rel'     => 'stylesheet',
-                    'type'    => 'text/css',
-                    'href'    => $meltdownBase.'css/desert.css');
-                $event->data['script'][] = array(
-                    'type'    => 'text/javascript',
-                    '_data'   => '',
-                    'src'     => $meltdownBase.'js/prettify.js');
-           }
+            $event->data['link'][] = array(
+                'rel'     => 'stylesheet',
+                'type'    => 'text/css',
+                'href'    => $meltdownBase.'css/desert.css');
+            $event->data['script'][] = array(
+                'type'    => 'text/javascript',
+                '_data'   => '',
+                'src'     => $meltdownBase.'js/prettify.js');
        }
 
        // Check if file is a .md page and if we are editing a page:

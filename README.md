@@ -2,7 +2,7 @@
     ---- plugin ----
     description: Parses PHP Markdown Extra blocks.
     author     : Joonas Pulakka, Jiang Le Yilan zhao
-    email      : joonas.pulakka@iki.fi, smartynaoki@gmail.com
+    email      : joonas.pulakka@iki.fi, smartynaoki@gmail.com zhaoyinlan@live.cn
     type       : syntax
     lastupdate : 2014-03-21
     compatible : 2012-10-13 “Adora Belle” and newer

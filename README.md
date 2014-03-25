@@ -2,7 +2,7 @@
     ---- plugin ----
     description: Parses PHP Markdown Extra blocks.
     author     : Joonas Pulakka, Jiang Le Yilan zhao
-    email      : joonas.pulakka@iki.fi, smartynaoki@gmail.com
+    email      : joonas.pulakka@iki.fi, smartynaoki@gmail.com zhaoyinlan@live.cn
     type       : syntax
     lastupdate : 2014-03-21
     compatible : 2012-10-13 “Adora Belle” and newer
@@ -12,6 +12,9 @@
     tags       : formatting, markup_language
     downloadurl:
     ----
+## Update 
+
+Add code highlight using google-code-prettify 
 
 ## Download and Installation
 
@@ -19,7 +22,7 @@ Download and install the plugin using the Plugin Manager using the following URL
 
 ## Warning
 
-For Strikethrough, "~~" "~~"  syntax is not supported, please use "&lt;s &gt; &lt;\s &gt;" or "&lt;del &gt;&lt;\del &gt;" instead.
+For Strikethrough, ~~  syntax is not supported, please use "&lt;s &gt; &lt;\s &gt;" or "&lt;del &gt;&lt;\del &gt;" instead.
 
 ## Usage
 

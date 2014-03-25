@@ -363,3 +363,17 @@ div.dokuwiki pre {
 div.dokuwiki pre {
         word-wrap: break-word;
 }
+
+div.dokuwiki blockquote{
+    border-left: 4px solid #dddddd;
+    padding: 0 10px;
+    color: #777777;
+}
+
+div.dokuwiki blockquote ul{
+    padding: 0 15px;
+}
+
+div.dokuwiki pre.prettyprint {
+    background-color: black !important;
+}

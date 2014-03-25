@@ -1,7 +1,7 @@
 base   markdownextra
-author Joonas Pulakka, Jiang Le
-email  joonas.pulakka@iki.fi
-date   2013-01-14
+author Joonas Pulakka, Jiang Le, Yinlan Zhao
+email  joonas.pulakka@iki.fi, zhaoyinlan@live.cn
+date   2014-03-24
 name   PHP Markdown Extra plugin
-desc   Parses PHP Markdown Extra blocks.
-url    http://www.dokuwiki.org/plugin:markdownextra
+desc   Parses PHP Markdown Extra blocks with code highlight
+url    http://www.dokuwiki.org/plugin:markdownextra, https://github.com/fishkao/meltdown

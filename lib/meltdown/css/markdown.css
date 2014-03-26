@@ -7,6 +7,9 @@ div.right_page , div.page {
     padding: 30px;
 }
 
+div.right_page code , div.page code {
+    box-shadow:none !important;
+}
 
 div.right_page a , div.page a {
     color: #4183C4 !important;
@@ -111,6 +114,7 @@ div.right_page pre , div.page pre {
   line-height: 1.6em;
   color: black;
   font-weight: normal;
+  padding: 0 5px;
 }
 
 div.right_page hr , div.page hr {
@@ -371,7 +375,7 @@ div.right_page blockquote, div.page blockquote{
 }
 
 div.right_page blockquote ul, div.page blockquote ul{
-    padding: 0 15px;
+    padding: 0 5px;
 }
 
 div.right_page pre.prettyprint , div.page pre.prettyprint {

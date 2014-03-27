@@ -1,7 +1,7 @@
 # PHP Markdown Extra plugin for DokuWiki
     ---- plugin ----
     description: Parses PHP Markdown Extra blocks.
-    author     : Joonas Pulakka, Jiang Le Yilan zhao
+    author     : Joonas Pulakka, Jiang Le, Yilan zhao
     email      : joonas.pulakka@iki.fi, smartynaoki@gmail.com zhaoyinlan@live.cn
     type       : syntax
     lastupdate : 2014-03-21

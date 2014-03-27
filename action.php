@@ -7,90 +7,67 @@
  */
 
 // must be run within Dokuwiki
-if (!defined('DOKU_INC')) die();
-if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once DOKU_PLUGIN.'action.php';
+if (!defined('DOKU_INC'))
+    die();
+if (!defined('DOKU_PLUGIN'))
+    define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
+require_once DOKU_PLUGIN . 'action.php';
 
 class action_plugin_markdownextra extends DokuWiki_Action_Plugin {
 
-   function register(&$controller) {
-      $controller->register_hook('PARSER_WIKITEXT_PREPROCESS',
-'BEFORE', $this, 'handle_parser_wikitext_preprocess');
-      $controller->register_hook('TPL_METAHEADER_OUTPUT',
-'BEFORE', $this, 'handle_meltdown_metadata');
-   }
+    function register(&$controller) {
+        $controller -> register_hook('PARSER_WIKITEXT_PREPROCESS', 'BEFORE', $this, 'handle_parser_wikitext_preprocess');
+        $controller -> register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'handle_meltdown_metadata');
+    }
 
-   function handle_parser_wikitext_preprocess(&$event, $param) {
-       global $ACT;
-       global $ID;
-       global $TEXT;
-       // Check if file is a .md page:
-       if(substr($ID,-3) != '.md') return true;
-       // Check for default view (in this case there is only 1 parsed text)
-       // or check that the text parsed is the text being edited
-       // (see: http://www.dokuwiki.org/devel:environment#text):
-       if($ACT != 'show' && $event->data != $TEXT) return true;
+    function handle_parser_wikitext_preprocess(&$event, $param) {
+        global $ACT;
+        global $ID;
+        global $TEXT;
 
-       if ($this->getConf('frontmatter')){
-           if (preg_match('/^---\s*\n(.*?\n?)^---\s*$\n?(.+)/sm',$event->data, $match)){
-               $event->data = sprintf("%s<markdown>\n%s\n</markdown>", $match[1], $match[2]);
-           }else{
-               $event->data = "<markdown>\n".$event->data."\n</markdown>";
-           }
-       }else{
-           $event->data = "<markdown>\n".$event->data."\n</markdown>";
-       }
-   }
+        // Check if file is a .md page:
+        if (substr($ID, -3) != '.md')
+            return true;
+        // Check for default view (in this case there is only 1 parsed text)
+        // or check that the text parsed is the text being edited
+        // (see: http://www.dokuwiki.org/devel:environment#text):
+        if ($ACT != 'show' && $event -> data != $TEXT)
+            return true;
 
-   function handle_meltdown_metadata(&$event, $param) {
-       global $ACT;
-       global $ID;
-       $meltdownBase = DOKU_BASE.'lib/plugins/markdownextra/lib/meltdown/';
-       $meltdownTweaksBase = DOKU_BASE.'lib/plugins/markdownextra/lib/meltdown-tweaks/';
-       if (substr($ID,-3) == '.md') {
-            $event->data['link'][] = array(
-                'rel'     => 'stylesheet',
-                'type'    => 'text/css',
-                'href'    => $meltdownBase.'css/markdown.css');
-            $event->data['link'][] = array(
-                'rel'     => 'stylesheet',
-                'type'    => 'text/css',
-                'href'    => $meltdownBase.'css/desert.css');
-            $event->data['script'][] = array(
-                'type'    => 'text/javascript',
-                '_data'   => '',
-                'src'     => $meltdownBase.'js/prettify.js');
-       }
-
-       // Check if file is a .md page and if we are editing a page:
-       if (substr($ID,-3) != '.md' || $ACT != 'edit') return;
-
-       if ($this->getConf('markdowneditor') == 'meltdown') {
-           // Add Meltdown css and script files, as well as our custom css and js tweaks:
-           $event->data['link'][] = array(
-                'rel'     => 'stylesheet',
-                'type'    => 'text/css',
-                'href'    => $meltdownBase.'css/meltdown.css');
-           $event->data['link'][] = array(
-                'rel'     => 'stylesheet',
-                'type'    => 'text/css',
-                'href'    => $meltdownTweaksBase.'meltdown-tweaks.css');
-           $event->data['script'][] = array(
-                'type'    => 'text/javascript',
-                '_data'   => '',
-                'src'     => $meltdownBase.'js/jquery.meltdown.js');
-           $event->data['script'][] = array(
-                'type'    => 'text/javascript',
-                '_data'   => '',
-                'src'     => $meltdownBase.'js/lib/js-markdown-extra.js');
-           $event->data['script'][] = array(
-                'type'    => 'text/javascript',
-                '_data'   => '',
-                'src'     => $meltdownBase.'js/lib/rangyinputs-jquery.min.js');
-           $event->data['script'][] = array(
-                'type'    => 'text/javascript',
-                '_data'   => '',
-                'src'     => $meltdownTweaksBase.'meltdown-tweaks.js');
+        if ($this -> getConf('frontmatter')) {
+            if (preg_match('/^---\s*\n(.*?\n?)^---\s*$\n?(.+)/sm', $event -> data, $match)) {
+                $event -> data = sprintf("%s<markdown>\n%s\n</markdown>", $match[1], $match[2]);
+            } else {
+                $event -> data = "<markdown>\n" . $event -> data . "\n</markdown>";
+            }
+        } else {
+            $event -> data = "<markdown>\n" . $event -> data . "\n</markdown>";
         }
-   }
+    }
+
+    function handle_meltdown_metadata(&$event, $param) {
+        //error_log(var_dump($event->data));
+        global $ACT;
+        global $ID;
+        $meltdownBase = DOKU_BASE . 'lib/plugins/markdownextra/lib/meltdown/';
+        $meltdownTweaksBase = DOKU_BASE . 'lib/plugins/markdownextra/lib/meltdown-tweaks/';
+
+        $event -> data['script'][] = array('type' => 'text/javascript', '_data' => '', 'src' => $meltdownBase . 'js/prettify.js');
+        $event -> data['script'][] = array('type' => 'text/javascript', '_data' => '', 'src' => $meltdownBase . 'js/autoload.js');
+
+        // Check if file is a .md page and if we are editing a page:
+        if (substr($ID, -3) != '.md' || $ACT != 'edit')
+            return;
+
+        if ($this -> getConf('markdowneditor') == 'meltdown') {
+            // Add Meltdown css and script files, as well as our custom css and js tweaks:
+            $event -> data['link'][] = array('rel' => 'stylesheet', 'type' => 'text/css', 'href' => $meltdownBase . 'css/meltdown.css');
+            $event -> data['link'][] = array('rel' => 'stylesheet', 'type' => 'text/css', 'href' => $meltdownTweaksBase . 'meltdown-tweaks.css');
+            $event -> data['script'][] = array('type' => 'text/javascript', '_data' => '', 'src' => $meltdownBase . 'js/jquery.meltdown.js');
+            $event -> data['script'][] = array('type' => 'text/javascript', '_data' => '', 'src' => $meltdownBase . 'js/lib/js-markdown-extra.js');
+            $event -> data['script'][] = array('type' => 'text/javascript', '_data' => '', 'src' => $meltdownBase . 'js/lib/rangyinputs-jquery.min.js');
+            $event -> data['script'][] = array('type' => 'text/javascript', '_data' => '', 'src' => $meltdownTweaksBase . 'meltdown-tweaks.js');
+        }
+    }
+
 }
